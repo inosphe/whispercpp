@@ -196,7 +196,7 @@ class Whisper:
 
         return "".join(
             [
-                self.context.full_get_segment_text(i)
+                self.context.full_get_segment_text_bytes(i).decode('utf-8', errors='ignore')
                 for i in range(self.context.full_n_segments())
             ]
         )

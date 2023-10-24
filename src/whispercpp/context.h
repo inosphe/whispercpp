@@ -591,6 +591,7 @@ struct Context {
 
     // Get the text of the specified segment
     const char *full_get_segment_text(int segment);
+    py::bytes full_get_segment_text_bytes(int segment);
 
     // Get number of tokens in the specified segment
     int full_n_tokens(int segment);

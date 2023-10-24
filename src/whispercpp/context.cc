@@ -509,6 +509,10 @@ const char *Context::full_get_segment_text(int segment) {
     return ret;
 }
 
+py::bytes Context::full_get_segment_text_bytes(int segment){
+    return py::bytes(full_get_segment_text(segment));
+}
+
 // Get numbers of tokens in specified segments.
 int Context::full_n_tokens(int segment) {
     if (!init_with_state) {
@@ -633,6 +637,8 @@ void ExportContextApi(py::module &m) {
              "segment"_a)
         .def("full_get_segment_end", &Context::full_get_segment_t1, "segment"_a)
         .def("full_get_segment_text", &Context::full_get_segment_text,
+             "segment"_a)
+        .def("full_get_segment_text_bytes", &Context::full_get_segment_text_bytes,
              "segment"_a)
         .def("full_n_tokens", &Context::full_n_tokens, "segment"_a)
         .def("full_get_token_text", &Context::full_get_token_text, "segment"_a,
